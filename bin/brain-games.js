@@ -1,4 +1,8 @@
 #!/usr/bin/env node
-import {greeting} from '../src/index.js';
-console.log('Welcome to the Brain Games!');
+import myRequest from '../src/index.js';
+
+const greeting = () => {
+  console.log('Welcome to the Brain Games!');
+};
 greeting();
+myRequest();
