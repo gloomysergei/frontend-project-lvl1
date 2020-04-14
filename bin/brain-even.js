@@ -1,4 +1,5 @@
 #!/usr/bin/env node
-import checkParity from '../src/checkParity.js';
+import { greeting, checkParity } from '../src/index.js';
 
+greeting();
 checkParity();
