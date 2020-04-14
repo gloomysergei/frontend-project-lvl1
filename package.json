@@ -6,7 +6,7 @@
   "type": "module",
   "bin": {
     "brain-games": "bin/brain-games.js",
-    "brain-evev": "bin/brain-even.js"
+    "brain-even": "bin/brain-even.js"
   },
   "files": [
     "dist"
