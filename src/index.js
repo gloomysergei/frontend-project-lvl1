@@ -3,7 +3,7 @@ import readlineSync from 'readline-sync';
 
 export const greeting = () => {
   console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name\n');
+  const name = readlineSync.question('May I have your name  ');
   console.log(`Hello, ${name}!`);
   return name;
 };
@@ -14,7 +14,8 @@ export const getRandomInt = (min, max) => {
 };
 
 export const checkParity = () => {
-  const messageEnd = "'yes' is wrong answer ;(. Correct answer was 'no'.\n Let's try again,";
+  const name = greeting();
+  const messageEnd = `'yes' is wrong answer ;(. Correct answer was 'no'.\n Let's try again, ${name}!`;
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
   for (let i = 0; i < 3; i += 1) {
     const counter = getRandomInt(1, 100);
@@ -27,5 +28,6 @@ export const checkParity = () => {
       console.log(messageEnd);
       break;
     }
+    console.log(`Congratulations ${name}!`);
   }
 };
