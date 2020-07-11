@@ -1,4 +1,4 @@
-
+/* eslint-disable no-param-reassign */
 import readlineSync from 'readline-sync';
 
 const arrOperand = ['+', '-', '*'];
@@ -58,6 +58,38 @@ export const calc = () => {
     const operand = getRandomOperand(arrOperand);
     const result = carryOutOperation(firstNumber, secondNumber, operand);
     const answer = Number(readlineSync.question(`Question: ${firstNumber} ${operand} ${secondNumber} `));
+    console.log(`Your answer: ${answer}`);
+    if (result === answer) {
+      console.log('Correct!');
+    } else {
+      console.log(`${answer} is wrong answer ;(. Correct answer was ${result}.`);
+      console.log(`Let's try again, ${name}!`);
+      break;
+    }
+    console.log(`Congratulations, ${name}!`);
+  }
+};
+
+const greatestCommonDivisor = (num1, num2) => {
+  while (num1 !== 0 && num2 !== 0) {
+    if (num1 > num2) {
+      // eslint-disable-next-line no-param-reassign
+      num1 %= num2;
+    } else {
+      num2 %= num1;
+    }
+  }
+  return (num1 + num2);
+};
+
+export const gcd = () => {
+  const name = greeting();
+  console.log('Find the greatest common divisor of given numbers.');
+  for (let i = 0; i < 3; i += 1) {
+    const firstNumber = getRandomInt(1, 100);
+    const secondNumber = getRandomInt(1, 100);
+    const result = greatestCommonDivisor(firstNumber, secondNumber);
+    const answer = Number(readlineSync.question(`Question: ${firstNumber} ${secondNumber} `));
     console.log(`Your answer: ${answer}`);
     if (result === answer) {
       console.log('Correct!');
