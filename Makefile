@@ -4,7 +4,7 @@ install:
 	npm install
 
 start:
-	node bin/brain-games.js
+	node bin/brain-prime.js
 
 publish:
 	npm publish --dry-run
