@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { checkParity } from '../src/index.js';
+import { checkParity } from '../src/games/even.js';
 
 checkParity();

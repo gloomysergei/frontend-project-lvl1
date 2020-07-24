@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { findingTermAD } from '../src/index.js';
+import { findingTermAD } from '../src/games/progression.js';
 
 findingTermAD();
