@@ -22,7 +22,6 @@ const carryOutOperation = (firstNum, secondNum, sign) => {
 
 export const calc = () => {
   const name = greeting();
-  console.log('What is the result of the expression?');
   for (let i = 0; i < 3; i += 1) {
     const firstNumber = getRandomInt(1, 100);
     const secondNumber = getRandomInt(1, 100);
