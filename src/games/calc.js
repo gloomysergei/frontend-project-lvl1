@@ -1,6 +1,7 @@
+/* eslint-disable import/no-duplicates */
 /* eslint-disable import/prefer-default-export */
-import readlineSync from 'readline-sync';
-import { greeting, getRandomInt } from '../index.js';
+import flow from '../index.js';
+import { getRandomInt } from '../index.js';
 
 const arrOperand = ['+', '-', '*'];
 const getRandomOperand = (arr) => {
@@ -17,25 +18,15 @@ const carryOutOperation = (firstNum, secondNum, sign) => {
   } else if (sign === '*') {
     result = firstNum * secondNum;
   }
-  return result;
+  return String(result);
 };
-
+const descriptionStr = 'What is the result of the expression?';
 export const calc = () => {
-  const name = greeting();
-  for (let i = 0; i < 3; i += 1) {
-    const firstNumber = getRandomInt(1, 100);
-    const secondNumber = getRandomInt(1, 100);
-    const operand = getRandomOperand(arrOperand);
-    const result = carryOutOperation(firstNumber, secondNumber, operand);
-    const answer = Number(readlineSync.question(`Question: ${firstNumber} ${operand} ${secondNumber} `));
-    console.log(`Your answer: ${answer}`);
-    if (result === answer) {
-      console.log('Correct!');
-    } else {
-      console.log(`${answer} is wrong answer ;(. Correct answer was ${result}.`);
-      console.log(`Let's try again, ${name}!`);
-      break;
-    }
-  }
-  console.log(`Congratulations, ${name}!`);
+  const firstNumber = getRandomInt(1, 100);
+  const secondNumber = getRandomInt(1, 100);
+  const operand = getRandomOperand(arrOperand);
+  const expression = `${firstNumber} ${operand} ${secondNumber} `;
+  const correctAnswer = carryOutOperation(firstNumber, secondNumber, operand);
+  return [expression, correctAnswer];
 };
+flow(descriptionStr, calc);

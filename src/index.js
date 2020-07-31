@@ -17,15 +17,15 @@ const flow = (descriptionGame, nameGame) => {
   const name = readlineSync.question('May I have your name  ');
   console.log(`Hello, ${name}!`);
   console.log(descriptionGame);
-  for (let i = 0; i <= 2; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     const [question, correctAnswer] = nameGame();
-    console.log(correctAnswer);
     const answer = (readlineSync.question(`Question: ${question} `));
     console.log(`Your answer: ${answer} `);
     if (answer === correctAnswer) {
       console.log('Correct');
     } else {
-      console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.\n Let's try again, ${name}!`);
+      console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}.\n Let's try again, ${name}!`);
+      break;
     }
   }
   console.log(`Congratulations ${name}!`);
