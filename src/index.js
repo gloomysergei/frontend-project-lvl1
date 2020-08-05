@@ -1,26 +1,22 @@
-/* eslint-disable no-param-reassign */
 import readlineSync from 'readline-sync';
 
-export const getRandomInt = (min, max) => {
-  const counter = Math.floor(Math.random() * (max - min)) + min;
-  return counter;
-};
-const flow = (descriptionGame, nameGame) => {
+const roundGame = 3;
+const runFlow = (description, getDataGame) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name  ');
   console.log(`Hello, ${name}!`);
-  console.log(descriptionGame);
-  for (let i = 0; i < 3; i += 1) {
-    const [question, correctAnswer] = nameGame();
-    const answer = (readlineSync.question(`Question: ${question} `));
+  console.log(description);
+  for (let i = 0; i < roundGame; i += 1) {
+    const [question, correctAnswer] = getDataGame();
+    const answer = readlineSync.question(`Question: ${question} `);
     console.log(`Your answer: ${answer} `);
     if (answer === correctAnswer) {
       console.log('Correct');
     } else {
       console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}.\n Let's try again, ${name}!`);
-      break;
+      return;
     }
   }
   console.log(`Congratulations ${name}!`);
 };
-export default flow;
+export default runFlow;

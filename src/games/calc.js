@@ -1,7 +1,5 @@
-/* eslint-disable import/no-duplicates */
-/* eslint-disable import/prefer-default-export */
-import flow from '../index.js';
-import { getRandomInt } from '../index.js';
+import runFlow from '../index.js';
+import { getRandomInt } from '../utils.js';
 
 const arrOperand = ['+', '-', '*'];
 const getRandomOperand = (arr) => {
@@ -20,13 +18,13 @@ const carryOutOperation = (firstNum, secondNum, sign) => {
   }
   return String(result);
 };
-const descriptionStr = 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 export const calc = () => {
   const firstNumber = getRandomInt(1, 100);
   const secondNumber = getRandomInt(1, 100);
   const operand = getRandomOperand(arrOperand);
-  const expression = `${firstNumber} ${operand} ${secondNumber} `;
+  const question = `${firstNumber} ${operand} ${secondNumber} `;
   const correctAnswer = carryOutOperation(firstNumber, secondNumber, operand);
-  return [expression, correctAnswer];
+  return [question, correctAnswer];
 };
-flow(descriptionStr, calc);
+export const runGame = () => runFlow(description, calc);

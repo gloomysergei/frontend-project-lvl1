@@ -1,12 +1,12 @@
-/* eslint-disable import/no-duplicates */
-/* eslint-disable import/prefer-default-export */
-import flow from '../index.js';
-import { getRandomInt } from '../index.js';
+import runFlow from '../index.js';
+import { getRandomInt } from '../utils.js';
 
-const descriptionStr = 'Answer "yes" if the number is even, otherwise answer "no".';
+const isEvenNumber = (number) => number % 2 === 0;
+
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 export const checkParity = () => {
-  const number = getRandomInt(1, 100);
-  const correctAnswer = number % 2 === 0 ? 'yes' : 'no';
-  return [number, correctAnswer];
+  const question = getRandomInt(1, 100);
+  const correctAnswer = isEvenNumber(question) ? 'yes' : 'no';
+  return [question, correctAnswer];
 };
-flow(descriptionStr, checkParity);
+export const runGame = () => runFlow(description, checkParity);

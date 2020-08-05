@@ -1,8 +1,6 @@
-/* eslint-disable import/no-duplicates */
 /* eslint-disable no-param-reassign */
-/* eslint-disable import/prefer-default-export */
-import flow from '../index.js';
-import { getRandomInt } from '../index.js';
+import runFlow from '../index.js';
+import { getRandomInt } from '../utils.js';
 
 const greatestCommonDivisor = (num1, num2) => {
   while (num1 !== 0 && num2 !== 0) {
@@ -12,14 +10,14 @@ const greatestCommonDivisor = (num1, num2) => {
       num2 %= num1;
     }
   }
-  return String(num1 + num2);
+  return (num1 + num2);
 };
-const descriptionStr = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 export const gcd = () => {
   const firstNumber = getRandomInt(1, 100);
   const secondNumber = getRandomInt(1, 100);
-  const correctAnswer = greatestCommonDivisor(firstNumber, secondNumber);
-  const expression = `${firstNumber} ${secondNumber} `;
-  return [expression, correctAnswer];
+  const correctAnswer = String(greatestCommonDivisor(firstNumber, secondNumber));
+  const question = `${firstNumber} ${secondNumber} `;
+  return [question, correctAnswer];
 };
-flow(descriptionStr, gcd);
+export const runGame = () => runFlow(description, gcd);

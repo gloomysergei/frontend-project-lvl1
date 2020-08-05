@@ -1,16 +1,19 @@
-/* eslint-disable import/prefer-default-export */
+import runFlow from '../index.js';
+import { getRandomInt } from '../utils.js';
 
-import flow, { getRandomInt } from '../index.js';
-
-const descriptionStr = 'Answer "yes" if given number is prime. Otherwise answer "no"';
-export const getPrimeNumber = () => {
-  const number = getRandomInt(1, 100);
-  let result = 'yes';
-  for (let index = 2; index < number; index += 1) {
-    if (number % index === 0) {
-      result = 'no';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no"';
+const isPrimeNumber = (number) => {
+  let result = true;
+  for (let i = 2; i < number; i += 1) {
+    if (number % i === 0) {
+      result = false;
     }
   }
-  return [number, result];
+  return result;
 };
-flow(descriptionStr, getPrimeNumber);
+export const getPrimeNumber = () => {
+  const question = getRandomInt(1, 100);
+  const correctAnswer = isPrimeNumber(question) ? 'yes' : 'no';
+  return [question, correctAnswer];
+};
+export const runGame = () => runFlow(description, getPrimeNumber);

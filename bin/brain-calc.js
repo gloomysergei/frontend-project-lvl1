@@ -1,4 +1,5 @@
 #!/usr/bin/env node
-import { calc } from '../src/games/calc.js';
+/* eslint-disable import/named */
+import { runGame } from '../src/games/calc.js';
 
-calc();
+runGame();
