@@ -1,10 +1,10 @@
 #Makefile
 
 install:
-	npm install
+	npm ci
 
 start:
-	node bin/brain-prime.js
+	node bin/brain-games.js
 
 publish:
 	npm publish --dry-run

@@ -1,4 +1,4 @@
-import runFlow from '../index.js';
+import flow from '../index.js';
 import { getRandomInt } from '../utils.js';
 
 const arrOperand = ['+', '-', '*'];
@@ -19,7 +19,7 @@ const carryOutOperation = (firstNum, secondNum, sign) => {
   return String(result);
 };
 const description = 'What is the result of the expression?';
-export const calc = () => {
+export const makeCalculator = () => {
   const firstNumber = getRandomInt(1, 100);
   const secondNumber = getRandomInt(1, 100);
   const operand = getRandomOperand(arrOperand);
@@ -27,4 +27,4 @@ export const calc = () => {
   const correctAnswer = carryOutOperation(firstNumber, secondNumber, operand);
   return [question, correctAnswer];
 };
-export const runGame = () => runFlow(description, calc);
+export const runGame = () => flow(description, makeCalculator);

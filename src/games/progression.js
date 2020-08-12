@@ -1,8 +1,8 @@
-import runFlow from '../index.js';
+import flow from '../index.js';
 import { getRandomInt } from '../utils.js';
 
 const description = 'What number is missing in the progression?';
-export const findingTermAD = () => {
+export const makeProgression = () => {
   const firstTerm = getRandomInt(1, 100);
   const diff = getRandomInt(1, 100);
   const positionElem = getRandomInt(0, 10);
@@ -18,4 +18,4 @@ export const findingTermAD = () => {
   const correctAnswer = expression.splice(positionElem, 1, '..').join(' ');
   return [expression, correctAnswer];
 };
-export const runGame = () => runFlow(description, findingTermAD);
+export const runGame = () => flow(description, makeProgression);
