@@ -1,30 +1,31 @@
-import flow from '../index.js';
+import runEngine from '../index.js';
 import { getRandomInt } from '../utils.js';
 
-const arrOperand = ['+', '-', '*'];
-const getRandomOperand = (arr) => {
-  const operand = arr[Math.floor(Math.random() * arr.length)];
-  return operand;
-};
-
-const carryOutOperation = (firstNum, secondNum, sign) => {
+const operators = ['+', '-', '*'];
+const calculate = (firstNum, secondNum, sign) => {
   let result = 0;
-  if (sign === '+') {
-    result = firstNum + secondNum;
-  } else if (sign === '-') {
-    result = firstNum - secondNum;
-  } else if (sign === '*') {
-    result = firstNum * secondNum;
+  switch (sign) {
+    case '+':
+      result = firstNum + secondNum;
+      break;
+    case '-':
+      result = firstNum - secondNum;
+      break;
+    case '*':
+      result = firstNum * secondNum;
+      break;
+    default:
+      throw new Error(`Недопустимая операция: ${sign}`);
   }
-  return String(result);
+  return result;
 };
 const description = 'What is the result of the expression?';
-export const makeCalculator = () => {
+export const getCalcData = () => {
   const firstNumber = getRandomInt(1, 100);
   const secondNumber = getRandomInt(1, 100);
-  const operand = getRandomOperand(arrOperand);
-  const question = `${firstNumber} ${operand} ${secondNumber} `;
-  const correctAnswer = carryOutOperation(firstNumber, secondNumber, operand);
+  const operator = operators[getRandomInt(0, operators.length - 1)];
+  const question = `${firstNumber} ${operator} ${secondNumber} `;
+  const correctAnswer = String(calculate(firstNumber, secondNumber, operator));
   return [question, correctAnswer];
 };
-export const runGame = () => flow(description, makeCalculator);
+export const runGame = () => runEngine(description, getCalcData);
