@@ -2,22 +2,17 @@ import runEngine from '../index.js';
 import { getRandomInt } from '../utils.js';
 
 const operators = ['+', '-', '*'];
-const calculate = (firstNum, secondNum, sign) => {
-  let result = 0;
-  switch (sign) {
+const calculate = (firstNum, secondNum, operator) => {
+  switch (operator) {
     case '+':
-      result = firstNum + secondNum;
-      break;
+      return firstNum + secondNum;
     case '-':
-      result = firstNum - secondNum;
-      break;
+      return firstNum - secondNum;
     case '*':
-      result = firstNum * secondNum;
-      break;
+      return firstNum * secondNum;
     default:
-      throw new Error(`Недопустимая операция: ${sign}`);
+      throw new Error(`Недопустимая операция: ${operator}`);
   }
-  return result;
 };
 const description = 'What is the result of the expression?';
 export const getCalcData = () => {
